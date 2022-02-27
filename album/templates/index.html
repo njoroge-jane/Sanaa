@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+{% load static%}
+
+{% block content %}
+{{block.super}}
+<div class="d-flex justify-content-between" style="overflow-x: hidden;height: 20%;">
+<img src="{%static 'images/wine.jpg'%}" alt="wine" style="width: 40%; transform:skewX(-20deg);">
+<div class="locations" style="margin-top: 400px; color: #1F6E73;font-family: italiana;"> <span style="border-left: 1px solid maroon;height: 500px;"> Nairobi</span> <span class="ms-5">Diaspora</span></div>
+<img src="{%static 'images/travel.jpg'%}" alt="wine" style="width: 40%; transform:skew(20deg);">
+</div>
+{% endblock %}
