@@ -3,9 +3,32 @@
 
 {% block content %}
 {{block.super}}
-<div class="d-flex justify-content-between" style="overflow-x: hidden;height: 20%;">
+<div class="d-flex justify-content-between" style="overflow-x: hidden;height: 500px;">
 <img src="{%static 'images/wine.jpg'%}" alt="wine" style="width: 40%; transform:skewX(-20deg);">
-<div class="locations" style="margin-top: 400px; color: #1F6E73;font-family: italiana;"> <span style="border-left: 1px solid maroon;height: 500px;"> Nairobi</span> <span class="ms-5">Diaspora</span></div>
+<div class="locations display-6" style="margin-top: 300px; color: #1F6E73;font-family: italiana;height: 500px;"> <span style="border-right: 1px solid maroon;"> Nairobi</span> <span class="">Diaspora</span></div>
 <img src="{%static 'images/travel.jpg'%}" alt="wine" style="width: 40%; transform:skew(20deg);">
 </div>
+{%for img in images%}
+<img src="{{img.image.url}}" alt="">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{img.title}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{img.description}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{%endfor%}
 {% endblock %}
