@@ -5,7 +5,7 @@
 {{block.super}}
 <div class="d-flex justify-content-between" style="overflow-x: hidden;overflow-y:hidden;height: 500px;">
 <img src="{%static 'images/wine.jpg'%}" alt="wine" style="width: 40%; transform:skewX(-20deg);">
-<div class="locations display-6" style="margin-top: 250px; color: #1F6E73;font-family: italiana;height: 500px;"> <span style="border-right: 1px solid maroon;"> Nairobi</span> <span class="">  Diaspora</span></div>
+<div class="locations display-6" style="margin-top: 250px; color: #1F6E73;font-family: italiana;height: 500px;"> <span style="border-right: 1px solid maroon;"> <a href="{%url 'location'%}">Nairobi</a></span> <span class=""><a href="{%url 'location'%}"> Diaspora </a> </span></div>
 <img src="{%static 'images/travel.jpg'%}" alt="wine" style="width: 40%; transform:skew(20deg);">
 </div>
 <h2 style="color: #1F6E73;font-family: italiana;" class="text-center mt-5" >GALLERY <hr></h2>
