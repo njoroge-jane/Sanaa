@@ -1,50 +1,103 @@
-{%extends 'base.html'%}
-{% load static%}
-
-{% block content %}
-{{block.super}}
-<div class="d-flex justify-content-between" style="overflow-x: hidden;overflow-y:hidden;height: 500px;">
-<img src="{%static 'images/wine.jpg'%}" alt="wine" style="width: 40%; transform:skewX(-20deg);">
-<div class="locations display-6" style="margin-top: 250px; color: #1F6E73;font-family: italiana;height: 500px;"> <span style="border-right: 1px solid maroon;"> <a href="{%url 'location'%}">Nairobi</a></span> <span class=""><a href="{%url 'location'%}"> Diaspora </a> </span></div>
-<img src="{%static 'images/travel.jpg'%}" alt="wine" style="width: 40%; transform:skew(20deg);">
+{%extends 'base.html'%} {% load static%} {% block content %} {{block.super}}
+<div
+  class="d-flex justify-content-between"
+  style="overflow-x: hidden; overflow-y: hidden; height: 500px"
+>
+  <img
+    src="{%static 'images/wine.jpg'%}"
+    alt="wine"
+    style="width: 40%; transform: skewX(-20deg)"
+  />
+  <div
+    class="locations display-6"
+    style="
+      margin-top: 250px;
+      color: #1f6e73;
+      font-family: italiana;
+      height: 500px;
+    "
+  >
+    <h3 style="border-right: 1px solid maroon">
+      <a href="{%url 'location'%}">Nairobi</a>
+    </h3>
+    <h3 class=""><a href="{%url 'location'%}"> Diaspora </a></h3>
+  </div>
+  <img
+    src="{%static 'images/travel.jpg'%}"
+    alt="wine"
+    style="width: 40%; transform: skew(20deg)"
+  />
 </div>
-<h2 style="color: #1F6E73;font-family: italiana;" class="text-center mt-5" >GALLERY <hr></h2>
+<h2 style="color: #1f6e73; font-family: italiana" class="text-center mt-5">
+  GALLERY
+  <hr />
+</h2>
 <div class="container-fluid mt-5 d-flex">
   <div class="row">
-{%for img in images%}
+    {%for img in images%}
 
     <div class="col-md-4 mt-5">
       <div class="border rounded">
-<img style="height: 200px;width: 250px;" class="border rounded" src="{{img.image.url}}" alt="">
-<button type="button" style="color: #1F6E73;" class="btn" data-bs-toggle="modal" data-bs-target="#modal{{img.id}}">
-  View More
-</button>
-</div>
-</div>
-
-<div class="modal fade" id="modal{{img.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content" style="width: 500px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{img.title}}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <img style="height: 300px;width: 460px;" src="{{img.image.url}}" alt="">
-        {{img.description}}
-        <p>CATEGORY:  {{img.category}}</p>
-        <p>LOCATION:  {{img.location}}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <img
+          style="height: 200px; width: 250px"
+          class="border rounded"
+          src="{{img.image.url}}"
+          alt=""
+        />
+        <button
+          type="button"
+          style="color: #1f6e73"
+          class="btn"
+          data-bs-toggle="modal"
+          data-bs-target="#modal{{img.id}}"
+        >
+          View More
+        </button>
       </div>
     </div>
+
+    <div
+      class="modal fade"
+      id="modal{{img.id}}"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content" style="width: 500px">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{img.title}}</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              style="height: 300px; width: 460px"
+              src="{{img.image.url}}"
+              alt=""
+            />
+            {{img.description}}
+            <p>CATEGORY: {{img.category}}</p>
+            <p>LOCATION: {{img.location}}</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {%endfor%}
   </div>
-</div>
-
-
-
-{%endfor%}
-</div>
 </div>
 {% endblock %}
