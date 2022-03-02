@@ -1,0 +1,1 @@
+web: gunicorn sanaa.wsgi --log-file -
