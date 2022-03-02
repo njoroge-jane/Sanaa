@@ -11,7 +11,11 @@ class Location(models.Model):
   def __str__(self):
         return self.location_name
   def save_location(self):   
-        self.save()         
+        self.save()     
+    
+  def delete_location(self):
+        Location.objects.filter(id = self.id).delete()
+         
 
 class Category(models.Model):
   category_name = models.CharField(max_length=60) 
@@ -19,7 +23,10 @@ class Category(models.Model):
   def __str__(self):
         return self.category_name  
   def save_category(self):   
-        self.save()               
+        self.save()   
+
+  def delete_category(self):
+        Category.objects.filter(id = self.id).delete()                   
 
 class Image(models.Model):
     title = models.CharField(max_length =60)
@@ -39,6 +46,9 @@ class Image(models.Model):
 
     def save_image(self):   
         self.save()  
+
+    def delete_image(self):
+        Image.objects.filter(id = self.id).delete()    
 
     @classmethod
     def get_image_by_id(cls, id):
