@@ -1,4 +1,5 @@
-{% load bootstrap5 %} {% load static%}
+{% load bootstrap5 %}
+{% load static%}
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,21 +12,9 @@
     {% endif %} {% block styles %} {% bootstrap_css %} {% endblock %}
   </head>
   <body>
-    {% include "navbar.html" %} {% block content %}{%endblock%} {% block scripts
-    %}
+    {% include "navbar.html" %}
+    {% block content %}{%endblock%} {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-      function myFunction() {
-        var copyText = document.getElementById("myInput");
-
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-
-        navigator.clipboard.writeText(copyText.value);
-
-        alert("Copied the text: " + copyText.value);
-      }
-    </script>
     {% bootstrap_javascript %} {% endblock %}
   </body>
 </html>
