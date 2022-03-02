@@ -34,7 +34,7 @@ class Image(models.Model):
     @classmethod
     def search_by_category(cls,search_term):
         
-        images = cls.objects.filter(category_name=Category.objects.filter(category__icontains=search_term).first()).all()
+        images = cls.objects.filter(category=Category.objects.filter(category_name__icontains=search_term).first()).all()
         return images 
 
     def save_image(self):   
