@@ -7,7 +7,7 @@ from . import views
 urlpatterns = [
   path('',views.index, name = 'index'),
   path('search', views.search_category, name ='search_results'),
-  # re_path(r'^location/(.*)/$', views.location, name = 'location')
+  re_path('location/(.*)/$', views.location, name = 'location')
 
 ]
 if settings.DEBUG:
