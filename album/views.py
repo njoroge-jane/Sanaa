@@ -8,9 +8,23 @@ def index(request):
   images = Image.objects.all()
   return render(request,'index.html',{"images":images,})
 
-def location(request):
-  if location == 'nairobi':
-    return redirect('nairobi.html')
+def location(request,location):
+  images = Image.filter_by_location(location)
+  location = Location.objects.all()
 
-  return render(request,'diaspora.html')    
+  return render(request, 'location.html', {"images":images, "location":location})   
 
+def search_category(request):
+
+    location = Location.objects.all()
+
+    if "gallery" in request.GET and request.GET["gallery"]:
+        search_term = request.GET.get("gallery")
+        searched= Image.search_by_category(search_term)
+        message = f"{search_category}"
+
+        return render(request, 'search.html', {"message": message, "images": searched, "location":location})
+
+    else:
+        message = "You haven't searched for any category"
+        return render(request, 'search.html', {"message": message, "location":location})

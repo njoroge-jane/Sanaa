@@ -33,8 +33,8 @@ class Image(models.Model):
 
     @classmethod
     def search_by_category(cls,search_term):
-        post = cls.objects.filter(category__icontains=search_term)
-        return post  
+        images = cls.objects.filter(category__icontains=search_term)
+        return images 
 
     def save_image(self):   
         self.save()  
@@ -43,4 +43,8 @@ class Image(models.Model):
     def get_image_by_id(cls, id):
         image = cls.objects.get(id = id)
         return image                  
-
+    
+    @classmethod
+    def filter_by_location(cls, location):
+        images = cls.objects.filter(location = Location.objects.filter(location__contains = location).first()).all()
+        return images  
